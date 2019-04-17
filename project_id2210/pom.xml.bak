@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>project.id2210</groupId>
+  <artifactId>project_id2210</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>project_id2210</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  <dependency>
+<groupId>com.google.cloud</groupId>
+<artifactId>google-cloud-storage</artifactId>
+<version>1.27.0</version>
+</dependency>
+<dependency>
+<groupId>com.google.cloud</groupId>
+<artifactId>google-cloud-datastore</artifactId>
+<version>1.27.0</version>
+</dependency>
+</dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <configuration>
+          <cleanupDaemonThreads>false</cleanupDaemonThreads>
+          <skip>false</skip>
+        </configuration>
+      </plugin>
+        <!-- make a script so we can run stuff directly by calling
+             mvn package appassembler:assemble -DskipTests -Dmaven.javadoc.skip=true  -Dmaven.source.skip=true
+             from the google-cloud-examples folder. The script is written to target/appassembler/bin/. -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>appassembler-maven-plugin</artifactId>
+        <version>1.10</version>
+        <configuration>
+          <programs>
+            <program>
+              <mainClass>project.id2210.project_id2210.MyStorage</mainClass>
+              <name>MyStorage</name>
+            </program>
+            <program>
+              <mainClass>project.id2210.project_id2210.Runner</mainClass>
+              <name>Runner</name>
+            </program>
+          </programs>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <excludes>
+            <exclude>**/IT*Snippets.java</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
