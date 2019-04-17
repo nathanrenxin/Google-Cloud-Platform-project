@@ -2,4 +2,6 @@ These days, cloud computing is part of any IT company, be it giants like Google,
 
 It is thus important to get contact and understand the different technologies behind cloud infrastructure. This project, part of the ID2210 - Distributed Computing, Peer-to-Peer and GRIDS, focuses on components of the Google Cloud Platform(GCP) such as compute, storage and network. We examined these components, deployed the necessary architecture and benchmarked their performance.
 
-The projected is done with GCP Java APIs.
+The project is done with GCP Java APIs.
+
+For detail, please refer to the report.
